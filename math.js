@@ -50,13 +50,30 @@ function calcularAlturaTriangulo(ladoA, base){
     }
 }
 
-function calcularAlturaEscaleno(lado1, lado2, lado3){
-    if (lado1 == lado2){
-        console.warn('false')
-    } else{
-        
+function calcularAlturaEscaleno(lado1, lado2, base){
+  
+    function calcularAreaTrianguloEscaleno(lado1, lado2, base){
+
+        let semiperimetro = (lado1 + lado2 + base) / 2;
+        let area = Math.sqrt(
+            semiperimetro * 
+            (semiperimetro - lado1) *
+            (semiperimetro - lado2) *
+            (semiperimetro - base)
+        );
+        return area;
     }
-}
+    if(lado1 == lado2 || lado1 == base || lado2 == base){
+        console.warn('false');
+    }
+    else{
+    const area = calcularAreaTrianguloEscaleno(lado1, lado2, base);
+    const altura = Math.floor((2 * area) / base);
+    return altura;
+    };
+
+};
+
 console.log({
     ladoTriangulo1,
     ladoTriangulo2,
